@@ -6,17 +6,148 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Школа языков</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+        
+        <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        
+        
+        <script src="http://maps.api.2gis.ru/2.0/loader.js?pkg=full"></script>
+
+        <!-- TODO вынести в отдельный файл -->
+        <script type="text/javascript">
+            var map;
+            var center = [45.069383, 39.008998];
+            var caption = 'Школа Языков'
+
+            DG.then(function () {
+                map = DG.map('map2gis', {
+                    center: center,
+                    zoom: 16
+                });                       
+                DG.marker(center).addTo(map).bindPopup(caption);
+            });
+        </script>
+        
     </head>
     <body>
-        <script src="js/bootstrap.min.js"></script>
+	<header class="top-header">	
+            <div class="row">
+                <!-- <div class="col-sm-10 col-sm-offset-1 col-md-2 hidden-xs col-md-offset-2"> -->
+                <div class="col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+                    <a href="index.html"><img src="img/logo.png" alt="" class="img-responsive"></a>
+                </div>
+            </div>
+            <div class="row">    
+                <div class="col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+                    <nav class="navbar navbar-default">
+                      <div class="container-fluid nav-bar">
+                        <div class="">
+                          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                          </button>
+                        </div>
+
+                          <div class="collapse navbar-collapse" id="menu">
+                          <ul class="nav navbar-nav navbar-right">
+                            <li><a class="menu active" href="#about" >О нас</a></li>
+                            <li><a class="menu" href="#languages" >Языки</a></li>
+                            <li><a class="menu" href="#price" >Цены</a></li>
+                            <li><a class="menu" href="#contact">Контакты</a></li>
+                            <li><a class="menu" href="#map">Карта</a></li>
+                          </ul>
+                        </div>
+                        
+                      </div>
+                    </nav>
+                </div>
+            </div>
+	</header>
+        
         <div class="row">
-            <div class="col-sm-4">.col-sm-4</div>
-            <div class="col-sm-4">.col-sm-4</div>
-            <div class="col-sm-4">.col-sm-4</div> 
+            <div class="col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+            
+                <section class="about">
+                    <div id="about">
+                        <div class="h2">О нас</div>
+                        <p class="text-justify">
+                        Добро пожаловать на сайт нашей школы.
+                        В стенах нашей школы проводятся курсы английского и немецкого для детей, подростков и взрослых!
+                        Занятия проходят в группах и индивидуально!</p>
+                    </div>
+                </section>
+                
+                <section class="languages">
+                    <div id="languages">
+                        <div class="h2">Языки</div>
+                        <div class="row">
+                            <div class="col-sm-6">Английский</div>
+                            <div class="col-sm-6">Немецкий</div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="price">
+                    <div id="price">
+                        <div class="h2">Цены</div>
+                        <table class="table">
+                            <thead>
+                                <th>Продолжительность занятия</th>
+                                <th>Группа 5-8 чел.</th>
+                                <th>Группа 2-4 чел.</th>
+                                <th>Индивидуально</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>60 минут</th>
+                                    <td>-</td>
+                                    <td>350 р.</td>
+                                    <td>525 р.</td>
+                                </tr>
+                                <tr>
+                                    <th>90 минут</th>
+                                    <td>300 р.</td>
+                                    <td>500 р.</td>
+                                    <td>785 р.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                
+                <section class="contact">
+                    <div id="contact">
+                        <div class="h2">Контакты</div>
+                        Мы находимся по адресу: 
+                        <address>
+                            г. Краснодар, 350000, ул. Байбаков 2/1, оф. 2<br>
+                            тел.: +7 (918) 212-10-46<br>
+                            email: <a href="mailto:bookmarks_news@mail.ru">bookmarks_news@mail.ru</a>
+                        </address>
+                    </div>
+                </section>
+                
+                <section class="map">
+                    <div id="map">
+                        <div class="h2">Карта</div>
+                        
+                        <div id="map2gis" style="height: 400px"></div>
+                    </div>
+                </section>
+            </div>
         </div>
+        
+        <!-- footer starts here -->
+	<footer class="footer clearfix">
+            <div class="row">
+
+            </div>
+	</footer>
     </body>
 </html>
