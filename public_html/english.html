@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Английский язык</title>
+        <meta charset="UTF-8">
+        
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/test.css" rel="stylesheet">
+        
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.validate.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+
+        <script>
+        $(document).ready(function() {
+            
+            $.validator.setDefaults({
+                highlight: function(element) {
+                    $(element).closest('.form-group').addClass('has-error');
+                    $(element).closest('.form-group').removeClass('has-success');
+                },
+                unhighlight: function(element) {
+                    $(element).closest('.form-group').removeClass('has-error');
+                    $(element).closest('.form-group').addClass('has-success');
+                },
+                errorElement: 'span',
+                errorClass: 'help-block',
+                errorPlacement: function(error, element) {
+                    if(element.parent('.input-group').length) {
+                        error.insertAfter(element.parent());
+                    } else {
+                        error.insertAfter(element);
+                    }
+                }
+            });
+            
+            /*$(document).bind("ajaxSend", function(){
+                $("#loading").show();
+            }).bind("ajaxComplete", function(){
+                $("#loading").hide();
+            });*/
+
+            $("form[name='registration']").validate({
+                // Правила проверки полей
+                rules: {
+                  // Ключ с левой стороны это название полей формы.
+                  // Правила валидации находятся с правой стороны
+                  name: {
+                    required: true
+                  },
+                  phone: {
+                    required: true,
+                    minlength: 7
+                  }
+                },
+                // Установка сообщений об ошибке
+                messages: {
+                    name: {
+                        required: "Пожалуйста укажите Ваше имя",
+                    },
+                    phone: {
+                        required: "Пожалуйста укажите Ваш контактный телефон",
+                        minlength: "Данноме поле не может быть меньше 7 символов"
+                    }
+                },
+                submitHandler: function(form, data) {
+                    /*var name = $('#name').val();
+                    var phone = $('#phone').val();*/
+                    var serializeParams = $(form).serialize()
+        
+        
+                    $.get('phpinfp.php'+'?'+ serializeParams)
+                        .done(function() {  
+                          $('#sendComplete').modal();
+                          $("#register").hide();
+                        })
+                        .fail(function() {
+                          alert( "Что-то пошло не так и ваша заявка не была доставлена" );
+                        });
+                }
+              });
+        });
+        </script>        
+        
+    </head>
+    <body>
+        
+        <div id="sendComplete" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header"><button class="close" type="button" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">Запись на бесплатный урок</h4>
+                    </div>
+                    <div class="modal-body">Ваша заявка на первый бесплатный урок успешно зарегистрирована, мы обязательно свяжимся с Вами в ближайшее время</div>
+                    <div class="modal-footer"><button class="btn btn-default" type="button" data-dismiss="modal">Закрыть</button></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row" style="background-color: #111419">
+            <div class="col-sm-12 col-md-8 col-lg-6 col-md-offset-2 col-lg-offset-3">
+                <div class="image" style="position: relative;">
+                    <img src="img/peopeltalk_english.jpg" alt="" class="img-responsive">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-8 col-lg-6 col-md-offset-2 col-lg-offset-3">
+                <div class="row">
+                    <div class="col-md-6" style="padding: 30px">
+                        <div style="position: relative; float: left; width: 55px; height: 50px;">
+                            <img style="position: absolute; left: -13px; top: -13px" src="img/ellipse.png" height="62" width="62">
+                            <img src="img/person.png" height="36" width="36">
+                            
+                        </div>
+                        <p class="h4 text-uppercase">Бесплатное определение уровня</p>
+                        <p>Для всех наших студентов мы проводим тестирование, на основании которого сможем определить Ваши сильные и слабые стороны.</p>
+                    </div>
+                    <div class="col-md-6" style="padding: 30px">
+                        <div style="position: relative; float: left; width: 55px; height: 50px;">
+                            <img style="position: absolute; left: -13px; top: -13px" src="img/ellipse.png" height="62" width="62">
+                            <img src="img/plan.png" height="36" width="36">
+                            
+                        </div>
+                        <p class="h4 text-uppercase">Индивидуальный план обучения</p>
+                        <p>Не зависимо от того, планируете ли Вы заниматься в группе или индивидуально, план обучения составляется индивидуально, в зависимости от ваших целей, текущего уровня, возраста и интересов</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6" style="padding: 30px">
+                        <div style="position: relative; float: left; width: 55px; height: 50px;">
+                            <img style="position: absolute; left: -13px; top: -13px" src="img/ellipse.png" height="62" width="62">
+                            <img src="img/pass.png" height="36" width="36">
+                            
+                        </div>
+                        <p class="h4 text-uppercase">Подготовка к экзаменам</p>
+                        <p>Если вам предстоят экзамены, то мы поможем Вам в этом. У нас есть успешный опыт подготовки к различным экзаменам.</p>
+                    </div>
+                    <div class="col-md-6" style="padding: 30px">
+                        <div style="position: relative; float: left; width: 55px; height: 50px;">
+                            <img style="position: absolute; left: -13px; top: -13px" src="img/ellipse.png" height="62" width="62">
+                            <img src="img/sheldure.png" height="36" width="36">
+                            
+                        </div>
+                        <p class="h4 text-uppercase">Удобный график</p>
+                        <p>Вы можете посещать занятие в удобное для Вас время. Наше расписание составляется исходя из Ваших пожеланий</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6" style="padding: 30px">
+                        <div style="position: relative; float: left; width: 55px; height: 50px;">
+                            <img style="position: absolute; left: -13px; top: -13px" src="img/ellipse.png" height="62" width="62">
+                            <img src="img/club.png" height="36" width="36">
+                            
+                        </div>
+                        <p class="h4 text-uppercase">Английский разговорный клуб</p>
+                        <p>Лучший способ закрепления материала это практика. Мы регулярно проводим встречи с нашими учениками и гостями в виде разговорного клуба. Все встречи тематические.</p>
+                    </div>
+                    <div class="col-md-6" style="padding: 30px">
+                        <div style="position: relative; float: left; width: 55px; height: 50px;">
+                            <img style="position: absolute; left: -13px; top: -13px" src="img/ellipse.png" height="62" width="62">
+                            <img src="img/ill.png" height="36" width="36">
+                            
+                        </div>
+                        <p class="h4 text-uppercase">Несгораемые занятия</p>
+                        <p>Если вы обучаетесь в группе и пропустили несколько занятий по уважительной причине, то что бы нагнать материал, мы проведём с Вами индивидуальные занятия и не возьмём дополнительной платы. Занятия проводятся по принципу 2 пропущенных занятия в группе = 1 индивидуальное</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="background-color: #1e212a; color: white" id="register">
+            <div class="col-sm-10 col-md-8 col-lg-6 col-sm-offset-1 col-md-offset-2 col-lg-offset-3">
+                <p class="h3 text-center">Запись на бесплатный пробный урок</p>
+                <form action="" class="form-horizontal" name="registration">
+                    <div class="form-group">
+                        <label for="name" class="col-sm-2 control-label">Ваше Имя</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Введите ваше имя">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone" class="col-sm-2 control-label">Телефон</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="phone" name="phone" placeholder="Введите Ваш контактный телефон">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-success" id="send">Записаться</button>
+                        </div>
+                    </div>
+                    
+                </form>
+                
+            </div>
+        </div>
+        <div class="row" style="background-color: gray; color: white; padding: 5px;">
+            <div class="col-sm-10 col-md-8 col-lg-6 col-sm-offset-1 col-md-offset-2 col-lg-offset-3">
+                <p class="text-center">Школа Языков, г. Краснодар, ул. Байбакова 2/1 оф. 2</p>
+            </div>
+        </div>
+    </body>
+</html>
